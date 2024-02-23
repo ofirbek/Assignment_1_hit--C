@@ -1,16 +1,14 @@
-#include <stdio.h>
-#include <math.h>
-
 #define _CRT_SECURE_NO_WARNINGS
 #define N 3
 
 /*Libraries*/
 #include <stdio.h>
+#include <math.h>
 
 /*
 	Assigned by:
-		Student1_Full_Name #ID
-		Student2_Full_Name #ID
+		Ofir_Baibekov #316223585
+		Yarden_Shelly #211409131
 */
 
 /* Function declarations */
@@ -92,16 +90,20 @@ void Ex3() {
 int multiplication(int num1, int num2) {
 	int product = 0, productIsNegative = 0, smallerNum, biggerNum;
 
+	//Checks whether the product should be positive or negative
 	if ((num1 < 0 && num2>0) || (num1 > 0 && num2 < 0)) {
 		productIsNegative = 1;
 	}
 
+	//Makes sure the numbers are positive for the calculation
 	num1 = (num1 < 0) ? -num1 : num1;
 	num2 = (num2 < 0) ? -num2 : num2;
 
+	//Checks which number is the biggest and the smallest
 	smallerNum = (num1 < num2) ? num1 : num2;
 	biggerNum = (num1 < num2) ? num2 : num1;
 
+	//loop that performs the multiplication operation
 	while (smallerNum > 0) {
 		product += biggerNum;
 		smallerNum--;
@@ -111,11 +113,13 @@ int multiplication(int num1, int num2) {
 }
 
 void primeNumbers(int num1, int num2) {
+	//Makes sure the number is odd
 	if (num1 % 2 == 0)
 		num1++;
 
 	printf("The prime numbers between %d and %d:\n", num1, num2);
 
+	//loop that prints all required primes using an additional function
 	while (num1 <= num2)
 	{
 		if (prime(num1))
@@ -125,11 +129,13 @@ void primeNumbers(int num1, int num2) {
 }
 
 int prime(int num) {
+	//an even number cannot be prime
 	if (num < 2 || num % 2 == 0)
 		return 0;
 
 	int sqrtNum = sqrt(num);
 
+	//loop that checks whether a number is prime effectively
 	for (int i = 3;i <= sqrtNum;i += 2) {
 		if (num % i == 0)
 			return 0;
@@ -143,6 +149,7 @@ int rotateNumber(int number, int spins) {
 
 	spins = spins % numLength;
 
+	//loop that rotates the digits according to the spins number
 	for (int i = 0; i < spins; i++)
 	{
 		x = number % 10;
@@ -154,6 +161,8 @@ int rotateNumber(int number, int spins) {
 
 int numberLength(int num) {
 	int numLength = 0;
+
+	//A loop that calculates the number of digits in the num variable
 	for (;num != 0;numLength++) {
 		num = num / 10;
 	}
@@ -165,6 +174,7 @@ int inputIntNonNegative() {
 	printf("Please enter a positive number\n");
 	scanf_s("%d", &num);
 
+	//loop that requests a positive number from the user until he enters a positive number
 	while (num < 0)
 	{
 		printf("The number you entered is incorrect, please enter a positive number\n");
